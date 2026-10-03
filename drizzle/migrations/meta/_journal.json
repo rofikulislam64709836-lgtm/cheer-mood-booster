@@ -43,6 +43,13 @@
       "when": 1791029126498,
       "tag": "0005_create_enums",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1791029935442,
+      "tag": "0006_site_visits",
+      "breakpoints": true
     }
   ]
 }
