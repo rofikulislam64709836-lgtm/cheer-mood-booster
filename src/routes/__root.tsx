@@ -16,6 +16,7 @@ import { AuthProvider } from "@/lib/auth";
 import { AppShell } from "@/components/layout/AppShell";
 import { SupportAdminProvider } from "@/components/SupportAdmin";
 import { Toaster } from "@/components/ui/sonner";
+import { VisitTracker } from "@/components/VisitTracker";
 
 function NotFoundComponent() {
   return (
@@ -129,6 +130,7 @@ function RootComponent() {
           <Outlet />
         </AppShell></SupportAdminProvider>
         <Toaster richColors position="top-center" />
+        <VisitTracker />
       </AuthProvider>
     </QueryClientProvider>
   );
