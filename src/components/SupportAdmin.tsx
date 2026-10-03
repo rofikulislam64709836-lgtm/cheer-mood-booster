@@ -79,7 +79,12 @@ function AdminLoginModal({ open, onClose }: { open: boolean; onClose: () => void
       close();
       toast.success("Welcome, admin");
       navigate({ to: "/admin" });
-    } catch { setErr("Something went wrong. Try again."); }
+    } catch (e) {
+      const m = String((e as Error)?.message ?? "");
+      setErr(m.includes("SUPABASE_SERVICE_ROLE_KEY") || m.includes("environment variable")
+        ? "Admin server is not configured yet (missing server key)."
+        : "Something went wrong. Try again.");
+    }
     finally { setBusy(false); setPw(""); }
   };
   return (
