@@ -40,8 +40,8 @@ export const adminDashboardStats = createServerFn({ method: "GET" }).handler(asy
 
   const series = Array.from({ length: 30 }, (_, i) => ({ day: dayKey(new Date(since30.getTime() + i * 86400_000)), orders: 0, revenue: 0, users: 0 }));
   const idx = new Map(series.map((r, i) => [r.day, i]));
-  O.forEach((o) => { const i = idx.get(dayKey(o.created_at)); if (i !== undefined) { series[i].orders++; series[i].revenue += net(o); } });
-  P.forEach((p) => { const i = idx.get(dayKey(p.created_at)); if (i !== undefined) series[i].users++; });
+  O.forEach((o) => { const i = idx.get(dayKey(o.created_at)); const r = i === undefined ? undefined : series[i]; if (r) { r.orders++; r.revenue += net(o); } });
+  P.forEach((p) => { const i = idx.get(dayKey(p.created_at)); const r = i === undefined ? undefined : series[i]; if (r) r.users++; });
   series.forEach((r) => (r.revenue = Math.round(r.revenue * 100) / 100));
 
   return {

@@ -7,6 +7,12 @@ import { Card, ErrorState, PageTitle } from "@/components/ui-kit";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 import { money } from "@/lib/format";
+import { adminUserStats } from "@/lib/admin-users.functions";
+
+export function useUserStats() {
+  const fn = useServerFn(adminUserStats);
+  return useQuery({ queryKey: ["admin", "user-stats"], queryFn: () => fn(), refetchInterval: 60_000 });
+}
 
 export function Stat({ icon: Icon, label, value, onClick }: { icon: typeof Users; label: string; value: string | number; onClick?: () => void }) {
   return (
