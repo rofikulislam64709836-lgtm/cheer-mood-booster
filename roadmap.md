@@ -14,6 +14,7 @@
 - [x] Starter catalog seeded as inactive drafts
 - [x] Admin sidebar (20 sections) + Dashboard + Users (search, filters, list, detail, password, balance, popup/notification, edit, ban, verify, API key, CSV) + sign-in tracking + user bell/popups
 - [ ] Waiting on user: rest of the admin task file (it was cut off after the Users section)
-- [ ] Admin: Orders, Add Funds, Services, API, Music, Content, Menu, Home, Support, QnA, Pages, Languages, Notifications, Theme, Backup, Activity Log, Trash; Music + API in public 3-dot menu
+- [x] Admin: Music + API (Reseller) sections; public 3-dot menu verified
+- [ ] Admin: Orders, Add Funds, Services, Content, Menu, Home, Support, QnA, Pages, Languages, Notifications, Theme, Backup, Activity Log, Trash
 - [ ] Database Backup ZIP + System Health / reconcile; README restore steps
 - [ ] Notifications, popups, maintenance mode, reseller API, languages, music, Telegram alerts, captcha
