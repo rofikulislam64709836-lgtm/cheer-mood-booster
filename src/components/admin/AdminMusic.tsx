@@ -24,9 +24,9 @@ export function AdminMusic() {
   const reload = () => { qc.invalidateQueries({ queryKey: ["admin-songs"] }); qc.invalidateQueries({ queryKey: ["welcome-song"] }); };
 
   const upload = async (file: File, kind: "file_path" | "cover_path") => {
-    if (kind === "file_path" && !file.type.startsWith("audio/")) return toast.error("Choose an audio file");
-    if (kind === "cover_path" && !file.type.startsWith("image/")) return toast.error("Choose an image");
-    if (file.size > 20 * 1024 * 1024) return toast.error("Max 20 MB");
+    if (kind === "file_path" && !file.type.startsWith("audio/")) { toast.error("Choose an audio file"); return; }
+    if (kind === "cover_path" && !file.type.startsWith("image/")) { toast.error("Choose an image"); return; }
+    if (file.size > 20 * 1024 * 1024) { toast.error("Max 20 MB"); return; }
     setBusy(true);
     try {
       const { path, token } = await upUrl({ data: { name: file.name } });
@@ -40,8 +40,8 @@ export function AdminMusic() {
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!f?.file_path) return toast.error("Upload an audio file first");
-    if (!f.title.trim()) return toast.error("Title is required");
+    if (!f?.file_path) { toast.error("Upload an audio file first"); return; }
+    if (!f.title.trim()) { toast.error("Title is required"); return; }
     setBusy(true);
     try { await save({ data: f }); toast.success("Song saved"); setF(null); reload(); }
     catch (e) { toast.error((e as Error).message); } finally { setBusy(false); }
