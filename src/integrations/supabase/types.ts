@@ -643,6 +643,24 @@ export type Database = {
         }
         Relationships: []
       }
+      site_visits: {
+        Row: {
+          created_at: string
+          day: string
+          visitor_id: string
+        }
+        Insert: {
+          created_at?: string
+          day?: string
+          visitor_id: string
+        }
+        Update: {
+          created_at?: string
+          day?: string
+          visitor_id?: string
+        }
+        Relationships: []
+      }
       songs: {
         Row: {
           active: boolean
